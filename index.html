@@ -22,6 +22,7 @@
             '', '', ''
         ]
         let jogadorDaVez = "X";
+        let totalDeJogadas = 0;
 
         function verificaJogada(posicao1, posicao2, posicao3) {
             if (jogadas[posicao1] == "" ||
@@ -50,18 +51,24 @@
                 verificaJogada(2, 4, 6)
             )
                 alert("fim de jogo")
+
+            if (totalDeJogadas == 9)
+                alert("Deu velha")
         }
 
         function fazerJogada(posicao) {
-            jogadas[posicao] = jogadorDaVez;
+            if (jogadas[posicao] == "") {
+                jogadas[posicao] = jogadorDaVez;
 
-            if (jogadorDaVez == "X")
-                jogadorDaVez = "O"
-            else
-                jogadorDaVez = "X"
+                if (jogadorDaVez == "X")
+                    jogadorDaVez = "O"
+                else
+                    jogadorDaVez = "X"
 
-            verificaGanhador();
-            desenhaBotoes();
+                totalDeJogadas++;
+                verificaGanhador();
+                desenhaBotoes();
+            }
         }
         function desenhaBotoes() {
             const game = document.querySelector("#game")
