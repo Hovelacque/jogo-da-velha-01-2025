@@ -5,16 +5,27 @@
         #game {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+            width: 180px;
+            background-color: #50595c;
+            padding: 5px;
+            border-radius: 5px;
         }
 
         button {
             height: 50px;
+            background-color: #5d7e62;
+            border: solid 1px black;
+            margin: 1px;
+            border-radius: 5px;
+            color: #b3c67f;
+            font-size: 35px;
         }
     </style>
 </head>
 
 <body>
     <div id="game"></div>
+    <label id="letreiro">Jodador da vez: X</label>
     <script>
         const jogadas = [
             '', '', '',
@@ -68,8 +79,15 @@
                 totalDeJogadas++;
                 verificaGanhador();
                 desenhaBotoes();
+                atualizaLetreiro(`Jodador da vez: ${jogadorDaVez}`)
             }
         }
+
+        function atualizaLetreiro(texto){
+            const letreiro = document.querySelector('#letreiro');
+            letreiro.innerText = texto
+        }
+
         function desenhaBotoes() {
             const game = document.querySelector("#game")
             game.innerHTML = "";
